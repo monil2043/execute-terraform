@@ -9,8 +9,8 @@ resource "aws_launch_configuration" "as_conf" {
 	sudo su
 	yum update -y
 	yum install java-1.8.0-openjdk -y
-	KEY=`aws s3 ls monil-demo-s3 --recursive | sort | tail -n 1 | awk '{print $4}'`
-	aws s3 cp s3://monil-demo-s3/$KEY ./
+	KEY=`aws s3 ls save-application-jars --recursive | sort | tail -n 1 | awk '{print $4}'`
+	aws s3 cp s3://save-application-jars/$KEY ./
 	sudo java -jar *.jar
 	EOF
 

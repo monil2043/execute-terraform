@@ -37,7 +37,7 @@ jobs:
       - name: "wait for some time"
         uses: jakejarvis/wait-action@master
         with:
-           time: '20m'
+           time: '5m'
 
       - name: "destroy everything created"
         run: terraform destroy -auto-approve

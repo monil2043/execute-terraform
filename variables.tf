@@ -6,5 +6,5 @@ variable "application_version" {
 
 variable "bucket_name" {
   description = "S3 bucket name"
-  default     = "monil-demo-s3"
+  default     = "save-application-jars"
 }
