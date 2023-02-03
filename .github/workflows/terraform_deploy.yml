@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy_terraform:
-    name: Deploy with terraform
+    name: Deploy usng Terraform
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
