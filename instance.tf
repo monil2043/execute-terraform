@@ -5,7 +5,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "save-application-jars"
+    bucket = "save-terraform-state-files"
     key    = "key/terraform.tfstate"
     region = "ap-south-1"
   }
