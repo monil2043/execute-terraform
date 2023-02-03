@@ -1,15 +1,16 @@
 
-name: Deploy application with Terraform
+name: Destroy application with Terraform
 
 
 
 on:
-  release:
-    types: [published]
+  push:
+    paths:
+     - 'delete/**'
 
 jobs:
-  deploy_terraform:
-    name: Deploy with terraform
+  destroy_terraform:
+    name: Destroy with terraform
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,10 +27,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: "intialize terraform"
-        run: terraform init -reconfigure
+        run: terraform init
 
-      - name: "validate terraform"
-        run: terraform validate -no-color
-
-      - name: "Run terraform apply"
-        run: terraform apply -auto-approve -no-color
+      - name: "destroy everything created"
+        run: terraform destroy -auto-approve
+        
