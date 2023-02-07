@@ -1,5 +1,5 @@
-resource "aws_iam_role" "SSMRoleForEC2Monil" {
-  name = "SSMRoleForEC2Monil"
+resource "aws_iam_role" "SSMRoleForEC2SpringAppDeployment" {
+  name = "SSMRoleForEC2SpringAppDeployment"
 
   assume_role_policy = <<EOF
 {
@@ -18,9 +18,9 @@ EOF
 }
 
 
-resource "aws_iam_instance_profile" "SSMRoleForEC2Monil"{
-name = "SSMRoleForEC2Monil"
-role= aws_iam_role.SSMRoleForEC2Monil.name
+resource "aws_iam_instance_profile" "SSMRoleForEC2SpringAppDeployment"{
+name = "SSMRoleForEC2SpringAppDeployment"
+role= aws_iam_role.SSMRoleForEC2SpringAppDeployment.name
 
 }
 
@@ -29,6 +29,6 @@ for_each = toset([
 "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
 "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 ])
-  role       = aws_iam_role.SSMRoleForEC2Monil.name
+  role       = aws_iam_role.SSMRoleForEC2SpringAppDeployment.name
   policy_arn = each.value
 }

@@ -1,5 +1,5 @@
-resource "aws_security_group" "web-sg-monil" {
-  name        = "Web-SG-monil"
+resource "aws_security_group" "web-security-group-springboot" {
+  name        = "Web-springboot-SG"
   vpc_id =  aws_vpc.dev.id
 
 

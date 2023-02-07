@@ -2,7 +2,7 @@ resource "aws_launch_configuration" "as_conf" {
   name_prefix   = "monil-demo-app-launchCOnfig"
   image_id      = "ami-0cca134ec43cf708f"
   instance_type = "t2.micro"
-  iam_instance_profile = aws_iam_instance_profile.SSMRoleForEC2Monil.name
+  iam_instance_profile = aws_iam_instance_profile.SSMRoleForEC2SpringAppDeployment.name
   user_data = <<EOF
 	
 	#!/bin/bash
@@ -14,7 +14,7 @@ resource "aws_launch_configuration" "as_conf" {
 	sudo java -jar *.jar
 	EOF
 
-  security_groups = [aws_security_group.web-sg-monil.id]
+  security_groups = [aws_security_group.web-security-group-springboot.id]
 
 
 

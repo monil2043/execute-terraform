@@ -3,12 +3,12 @@ resource "aws_autoscaling_group" "webapp_asg" {
   desired_capacity   = 2
   max_size           = 4
   min_size           = 2
-  target_group_arns = [aws_lb_target_group.webapp_tg-monil.arn]
+  target_group_arns = [aws_lb_target_group.springboot-target-group.arn]
   health_check_grace_period = 120
 
   tag {
-    key                 = "Monil-demo-app"
-    value               = "monil-demo-worker"
+    key                 = "springboot-demo-app"
+    value               = "springboot-demo-worker"
     propagate_at_launch = true
   }
 

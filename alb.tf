@@ -1,18 +1,18 @@
 resource "aws_lb" "webapp_alb" {
-  name               = "webapp-monil-lb"
+  name               = "springboot-load-balancer"
   internal           = false
   ip_address_type = "ipv4"
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.web-sg-monil.id]
+  security_groups    = [aws_security_group.web-security-group-springboot.id]
   subnets = [aws_subnet.dev-public-1.id,aws_subnet.dev-public-2.id ]
 
   tags = {
-    Name = "webapp-monil-lb"
+    Name = "springboot-load-balancer"
   }
 }
 
-resource "aws_lb_target_group" "webapp_tg-monil" {
-  name     = "webapp-lb-monil-tg"
+resource "aws_lb_target_group" "springboot-target-group" {
+  name     = "springboot-target-group"
   port     = 8080
   protocol = "HTTP"
   target_type = "instance"
@@ -35,6 +35,6 @@ resource "aws_lb_listener" "front_end" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.webapp_tg-monil.arn
+    target_group_arn = aws_lb_target_group.springboot-target-group.arn
   }
 }
